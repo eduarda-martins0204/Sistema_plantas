@@ -1,27 +1,40 @@
 <?php  
-Class Cliente {
-    private $id;
-    private $nome;
-    private $email;
-    private $senha;
 
-    public function __construct($id=null, $nome=null, $email=null, $senha=null) {
-        $this->id = $id;
-        $this->nome = $nome;
-        $this->email = $email;
-        $this->senha = $senha;
+namespace Controller;
+
+use service\ClienteService;
+use template\ClienteTemp;
+use template\ITemplate;
+
+
+Class Cliente
+{
+    private ITemplate $template;
+    public function __construct()
+    {
+        $this->template = new ClienteTemp();
     }
 
-    public function getId() {return $this->id;}
-    public function setId($id) {$this->id = $id;}
+    public function listar()
+    {
+        $service = new ClienteService();
+        $resultado = $service->listarCliente();
+        $this->template->layout("\\public\\cliente\\listar.php", $resultado)
+    }
 
-    public function getNome() {return $this->nome;}
-    public function setNome($nome) {$this->nome = $nome;}
+    public function inserir(){
 
-    public function getEmail() {return $this->email;}
-    public function setEmail($email) {$this->email = $email;}
+        $nome = $post["nome"];
+        $email = $post["email"];
+        $service = new ClienteService();
+        $resultado = $service->inseri($nome, $email);
+        header("location: /mvc20251/cliente/lista?info=1");
+    }
 
-    public function getSenha() {return $this->senha;}
-    public function setSenha($senha) {$this->senha = $senha;}
+    public function formulario()
+    {
+        $this->template->layout("\\public\\cliente\\form.php");
+    }
+    
 }
 ?>
