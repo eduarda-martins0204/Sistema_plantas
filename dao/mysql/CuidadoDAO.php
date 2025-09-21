@@ -1,10 +1,10 @@
 <?php
-require_once 'dao/IClienteDAO.php';
-require_once 'controller/Cliente.php';
+require_once 'dao/ICuidadoDAO.php';
+require_once 'controller/Cuidado.php';
 
-class ClienteDAO implements IClienteDAO {
+class CuidadoDAO implements ICuidadoDAO {
     // Aqui você implementa os métodos usando SQL para MySQL
-    public function salvar(Cliente $cliente) {
+    public function salvar(Cuidado $cuidado) {
         // Código para inserir no banco
     }
     public function buscarPorId($id) {
@@ -13,7 +13,7 @@ class ClienteDAO implements IClienteDAO {
     public function buscarTodos() {
         // Código para buscar todos
     }
-    public function atualizar(Cliente $cliente) {
+    public function atualizar(Cuidado $cuidado) {
         // Código para atualizar
     }
     public function remover($id) {
