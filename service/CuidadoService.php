@@ -5,16 +5,16 @@ use dao\mysql\CuidadoDao;
 
 Class CuidadoService extends CuidadoDao {
 
-    public function listarCuidados(){
-        return parent::listarCuidados();
+    public function listar(){
+        return parent::listar();
     }
 
-    public function inserirCuidado($id,$cuidado){
-        return parent::inserirCuidado($id,$cuidado);
+    public function inserir($id,$cuidado){
+        return parent::inserir($id,$cuidado);
     }
 
-    public function alterarCuidado($id,$cuidado){
-        return parent::alterarCuidado($id,$cuidado);
+    public function alterar($id,$cuidado){
+        return parent::alterar($id,$cuidado);
     }
 
     public function listarID($ID){

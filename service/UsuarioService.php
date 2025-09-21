@@ -1,26 +1,22 @@
 <?php
 namespace service;
 
-use dao\mysql\ClienteDAO;
+use dao\mysql\UsuarioDAO;
 
-Class ClienteService extends ClienteDAO{
-    public function listarClientes(){
-
+Class UsuarioService extends UsuarioDAO{
+    public function listarUsuarios(){
         return parent::listar();
     }
 
-    public function inserir($nome,$endereco){
-        
-        return parent::inserir($nome,$endereco);
+    public function inserir($nome,$email){
+        return parent::inserir($nome,$email);
     }
 
-    public function alterar($id,$nome,$endereco){
-        
-        return parent::alterar($id,$nome,$endereco);
+    public function alterar($id,$nome,$email){
+        return parent::alterar($id,$nome,$email);
     }
 
     public function listarID($id){
-        
         return parent::listarID($id);
     }
 
