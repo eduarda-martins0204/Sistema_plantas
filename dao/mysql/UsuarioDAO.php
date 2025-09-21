@@ -1,22 +1,46 @@
 <?php
-require_once 'dao/IUsuarioDAO.php';
-require_once 'controller/Usuario.php';
+namespace dao\mysql;
 
-class UsuarioDAO implements IUsuarioDAO {
-    public function salvar(Usuario $usuario) {
-        // Implementar lógica para inserir um usuário no banco
+use dai\IUsuarioDAO;
+use generic\MysqlFactory;
+
+Class UsuarioDAO extends MysqlFactory implements IUsuarioDAO {
+    // Implementação dos métodos da interface IUsuarioDAO
+
+    public function listar(){
+        $sql = "select id,nome,email from usuarios";
+        $retorno = $this->banco->executar($sql);
+        return $retorno;
     }
-    public function buscarPorId($id) {
-        // Implementar lógica para buscar um usuário pelo id
+
+    public function listarID($id){
+        $sql = "select id,nome,email from usuarios where id =: id";
+        $param=[
+            ":id"=>$id
+        ];
+        $retorno = $this->banco->executar($sql);
+        return $retorno;
     }
-    public function buscarTodos() {
-        // Implementar lógica para buscar todos os usuários
+
+    public function inserir($nome,$email){
+        $sql = "insert into usuarios (nome,email,senha) values (:nome,:email)";
+        $param=[
+            ":nome"=>$nome,
+            ":email"=>$email,
+        ];
+        $retorno = $this->banco->executar($sql,$param);
+        return $retorno;
     }
-    public function atualizar(Usuario $usuario) {
-        // Implementar lógica para atualizar um usuário
-    }
-    public function remover($id) {
-        // Implementar lógica para remover um usuário
+
+    public function alterar($id,$nome,$email){
+        $sql = "update usuarios set nome=:nome,email=:email where id=:id";
+        $param=[
+            ":id"=>$id,
+            ":nome"=>$nome,
+            ":email"=>$email,
+        ];
+        $retorno = $this->banco->executar($sql,$param);
+        return $retorno;
     }
 }
 ?>
