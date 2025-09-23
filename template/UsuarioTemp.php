@@ -1,20 +1,20 @@
 <?php
 namespace template;
 
-use template\ITemplate;
-
 class UsuarioTemp implements ITemplate {
     public function cabecalho() {
+        echo "<div> Cabeçalho </div>";
     }
 
     public function rodape() {
+        echo "<div> Rodapé </div>";
     }
 
     public function layout($caminho, $parametro = null) {
-        if ($parametro) {
-            extract(['resultado' => $parametro]);
-        }
-        
-        require_once($caminho);
+        $this->cabecalho();
+        include $_SERVER["DOCUMENT_ROOT"]."\\sistemaplantas".$caminho;
+        $this->rodape();
     }
 }
+
+
