@@ -15,6 +15,7 @@ class UsuarioTemp implements ITemplate {
             extract(['resultado' => $parametro]);
         }
         
-        require_once("public/" . $caminho);
+        // Esta linha foi alterada para remover barras extras do caminho
+        require_once("public/" . ltrim($caminho, '\\'));
     }
 }
