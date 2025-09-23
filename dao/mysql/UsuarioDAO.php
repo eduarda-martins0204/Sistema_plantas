@@ -11,6 +11,15 @@ class UsuarioDAO extends MysqlFactory implements IUsuarioDAO {
         $retorno = $this->banco->executar($sql);
         return $retorno;
     }
+
+    public function listarId($id){
+    $sql = "select id,nome,email from usuarios where id=:id";
+    $param = [
+        ":id" =>$id
+    ];
+    $retorno = $this->banco->executar($sql,$param);
+    return $retorno;
+}
     
     public function inserir($nome, $email){
         $sql = "insert into usuarios (nome, email) values (:nome, :email)";
@@ -42,3 +51,5 @@ class UsuarioDAO extends MysqlFactory implements IUsuarioDAO {
         return $retorno;
     }
 }
+
+
