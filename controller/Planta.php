@@ -13,7 +13,7 @@ class Planta {
 
     public function listar(){
         $service = new PlantaService();
-        $resultado = $service->listarPlanta();
+        $resultado = $service->listar();
         $this->template->layout("\\public\\planta\\listar.php", $resultado);
     }
 
