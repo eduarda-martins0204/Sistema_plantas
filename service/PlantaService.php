@@ -8,6 +8,10 @@ class PlantaService extends PlantaDAO {
     public function listar(){
         return parent::listar();
     }
+
+    public function listarId($id) {
+        return parent::listarId($id);
+     }
     
     public function inserir($nome_cientifico, $nome_popular){
         return parent::inserir($nome_cientifico, $nome_popular);
@@ -21,3 +25,5 @@ class PlantaService extends PlantaDAO {
         return parent::excluir($id);
     }
 }
+
+
