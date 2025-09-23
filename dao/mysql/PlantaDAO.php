@@ -11,6 +11,15 @@ class PlantaDAO extends MysqlFactory implements IPlantaDAO {
         $retorno = $this->banco->executar($sql);
         return $retorno;
     }
+
+    public function listarId($id){
+    $sql = "select id,nome_cientifico, nome_popular from plantas where id=:id";
+    $param = [
+        ":id" =>$id
+    ];
+    $retorno = $this->banco->executar($sql,$param);
+    return $retorno;
+}
     
     public function inserir($nome_cientifico, $nome_popular){
         $sql = "insert into plantas (nome_cientifico, nome_popular) values (:nome_cientifico, :nome_popular)";
@@ -42,3 +51,5 @@ class PlantaDAO extends MysqlFactory implements IPlantaDAO {
         return $retorno;
     }
 }
+
+
