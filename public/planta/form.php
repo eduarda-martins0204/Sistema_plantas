@@ -1,12 +1,12 @@
-<form method="POST" action="/mvc20251/cliente/inserir">
-    <label>Nome: </label>
-    <input type="text" name="nome" 
-        value="<?= ($parametro != null) ? $parametro[0]["nome"] : "" ?>" />
+<form method="POST" action="/mvc20251/planta/inserir">
+    <label>Nome Científico: </label>
+    <input type="text" name="nome_cientifico"
+        value="<?= ($parametro != null) ? $parametro[0]["nome_cientifico"] : "" ?>" />
     <br />
 
-    <label>Endereco: </label>
-    <input type="text" name="endereco" 
-        value="<?= ($parametro != null) ? $parametro[0]["endereco"] : "" ?>" />
+    <label>Nome Popular: </label>
+    <input type="text" name="nome_popular"
+        value="<?= ($parametro != null) ? $parametro[0]["nome_popular"] : "" ?>" />
     <br />
 
     <?php
