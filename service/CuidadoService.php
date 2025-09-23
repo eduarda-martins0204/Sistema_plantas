@@ -3,7 +3,7 @@ namespace service;
 
 use dao\mysql\CuidadoDao;
 
-Class CuidadoService extends CuidadoDao {
+Class CuidadoService extends CuidadoDAO {
 
     public function listar(){
         return parent::listar();
@@ -20,5 +20,6 @@ Class CuidadoService extends CuidadoDao {
     public function listarID($ID){
         return parent::listarID($ID);
     }
+
 
 }
