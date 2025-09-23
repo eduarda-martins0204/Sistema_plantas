@@ -1,22 +1,44 @@
 <?php
-require_once 'dao/IPlantaDAO.php';
-require_once 'controller/Planta.php';
+namespace dao\mysql;
 
-class PlantaDAO implements IPlantaDAO {
-    public function salvar(Planta $planta) {
-        // Implementar lógica para inserir uma planta no banco
+use dao\IPlantaDAO;
+use generic\MysqlFactory;
+
+class PlantaDAO extends MysqlFactory implements IPlantaDAO {
+
+    public function listar(){
+        $sql = "select id, nome_cientifico, nome_popular from plantas";
+        $retorno = $this->banco->executar($sql);
+        return $retorno;
     }
-    public function buscarPorId($id) {
-        // Implementar lógica para buscar uma planta pelo id
+    
+    public function inserir($nome_cientifico, $nome_popular){
+        $sql = "insert into plantas (nome_cientifico, nome_popular) values (:nome_cientifico, :nome_popular)";
+        $param = [
+            ":nome_cientifico" => $nome_cientifico,
+            ":nome_popular" => $nome_popular
+        ];
+        $retorno = $this->banco->executar($sql, $param);
+        return $retorno;
     }
-    public function buscarTodos() {
-        // Implementar lógica para buscar todas as plantas
+
+    public function alterar($id, $nome_cientifico, $nome_popular){
+        $sql = "update plantas set nome_cientifico = :nome_cientifico, nome_popular = :nome_popular where id = :id";
+        $param = [
+            ":id" => $id,
+            ":nome_cientifico" => $nome_cientifico,
+            ":nome_popular" => $nome_popular
+        ];
+        $retorno = $this->banco->executar($sql, $param);
+        return $retorno;
     }
-    public function atualizar(Planta $planta) {
-        // Implementar lógica para atualizar uma planta
-    }
-    public function remover($id) {
-        // Implementar lógica para remover uma planta
+
+    public function excluir($id){
+        $sql = "delete from plantas where id = :id";
+        $param = [
+            ":id" => $id
+        ];
+        $retorno = $this->banco->executar($sql, $param);
+        return $retorno;
     }
 }
-?>
