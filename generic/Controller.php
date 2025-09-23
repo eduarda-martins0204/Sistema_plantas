@@ -8,8 +8,7 @@ class Controller{
         $this->arrChamadas = [
             '' => new Acao('Home', 'index'),
             "planta/listar" => new Acao('Planta', 'listar'),
-            "planta/inserir" => new Acao('Planta', 'inserir'),
-            "planta/formulario" => new Acao('Planta', 'formulario'),
+            "planta/cadastrar" => new Acao('Planta', 'cadastrar'),
             "planta/editar" => new Acao('Planta', 'editar'),
             "planta/excluir" => new Acao('Planta', 'excluir'),
 
@@ -34,3 +33,4 @@ class Controller{
         echo "Rota nâo existe!";
     }
 }
+
