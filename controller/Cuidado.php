@@ -1,37 +1,43 @@
-<?php
-class Cuidado {
-    private $id;
-    private $plantaId;
-    private $tipo;
-    private $descricao;
-    private $data;
-    private $lembrete;
+<?php  
 
-    public function __construct($id = null, $plantaId = null, $tipo = null, $descricao = null, $data = null, $lembrete = null) {
-        $this->id = $id;
-        $this->plantaId = $plantaId;
-        $this->tipo = $tipo;
-        $this->descricao = $descricao;
-        $this->data = $data;
-        $this->lembrete = $lembrete;
+namespace Controller;
+
+use service\CuidadoService;
+use template\CuidadoTemp;
+use template\ITemplate;
+
+Class Usuario{
+    private ITemplate $template;
+    public function __construct(){
+        $this->template = new CuidadoTemp();
     }
 
-    public function getId() { return $this->id; }
-    public function setId($id) { $this->id = $id; }
+    public function listar(){
+        $service = new CuidadoService();
+        $resultado = $service->listarCuidado();
+        $this->template->layout("\\public\\cuidado\\listar.php", $resultado)
+    }
 
-    public function getPlantaId() { return $this->plantaId; }
-    public function setPlantaId($plantaId) { $this->plantaId = $plantaId; }
+    public function inserir() {
+    $usuario_id   = $_POST["usuario_id"];
+    $planta_id    = $_POST["planta_id"];
+    $tipo_cuidado = $_POST["tipo_cuidado"];
+    $service = new CuidadoService();
+    $resultado = $service->inserir($usuario_id, $planta_id, $tipo_cuidado);
 
-    public function getTipo() { return $this->tipo; }
-    public function setTipo($tipo) { $this->tipo = $tipo; }
+    header("location: /mvc20251/cuidado/lista?info=1");
+    }
 
-    public function getDescricao() { return $this->descricao; }
-    public function setDescricao($descricao) { $this->descricao = $descricao; }
+    public function formulario(){
+        $this->template->layout("\\public\\cuidado\\form.php");
+    }
+    
+    public function alterarForm(){
+        $id = $_GET["id"];
+        $service = new CuidadoService();
+        $resultado = $service->buscarCuidado($id);
 
-    public function getData() { return $this->data; }
-    public function setData($data) { $this->data = $data; }
-
-    public function getLembrete() { return $this->lembrete; }
-    public function setLembrete($lembrete) { $this->lembrete = $lembrete; }
+        $this->template->layout("\\public\\cuidado\\formAlterar.php", $resultado);
+    }
 }
 ?>

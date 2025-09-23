@@ -1,41 +1,41 @@
 <?php
 namespace controller;
 
-use dao\mysql\PlantaDAO;
+use service\PlantaService;
+use template\PlantaTemp;
+use template\ITemplate;
 
 class Planta {
-    public function listar() {
-        $dao = new Planta();
-        $plantas = $dao->getAll();
-        
-        // Aqui você chamaria a view
-        include "view/plantas/listar.php";
+    private ITemplate $template;
+    public function __construct(){
+        $this->template = new PlantaTemp();
     }
 
-    public function cadastrar() {
-        if ($_SERVER["REQUEST_METHOD"] === "POST") {
-            $dao = new Planta();
-            $dao->insert($_POST["nome"], $_POST["especie"]);
-            header("Location: index.php?classe=Planta&metodo=listar");
-        } else {
-            include "view/plantas/cadastrar.php";
-        }
+    public function listar(){
+        $service = new PlantaService();
+        $resultado = $service->listarPlanta();
+        $this->template->layout("\\public\\planta\\listar.php", $resultado);
     }
 
-    public function editar() {
-        $dao = new Planta();
-        if ($_SERVER["REQUEST_METHOD"] === "POST") {
-            $dao->update($_POST["id"], $_POST["nome"], $_POST["especie"]);
-            header("Location: index.php?classe=Planta&metodo=listar");
-        } else {
-            $planta = $dao->getById($_GET["id"]);
-            include "view/plantas/editar.php";
-        }
+    public function inserir(){
+        $nome_cientifico = $_POST["nome_cientifico"];
+        $nome_popular = $_POST["nome_popular"];
+        $service = new PlantaService();
+        $resultado = $service->inseri($nome_cientifico, $nome_popular);
+        header("location: /mvc20251/planta/lista?info=1");
+        //alterar a rota conforme a pasta
     }
 
-    public function excluir() {
-        $dao = new Planta();
-        $dao->delete($_GET["id"]);
-        header("Location: index.php?classe=Planta&metodo=listar");
+    public function formulario(){
+        $this->template->layout("\\public\\planta\\form.php");
+    }
+
+    public function alterarForm(){
+        $id = $_GET["id"];
+        $service = new PlantaService();
+        $resultado = $service->listarID($id);
+
+        $this->template->layout("\\public\\planta\\formAlterar.php", $resultado);
     }
 }
+?>
