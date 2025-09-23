@@ -1,4 +1,4 @@
-<form method="POST" action="/mvc20251/planta/inserir">
+<form method="POST" action="/sistemaplantas/index.php?param=planta/inserir">
     <label>Nome Científico: </label>
     <input type="text" name="nome_cientifico"
         value="<?= ($parametro != null) ? $parametro[0]["nome_cientifico"] : "" ?>" />
