@@ -1,7 +1,7 @@
 <?php
 namespace generic;
 
-use MysqlSingleton;
+use generic\MysqlSingleton;
 
 class MysqlFactory{
     public MysqlSingleton $banco;
