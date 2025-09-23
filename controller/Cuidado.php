@@ -6,7 +6,7 @@ use service\CuidadoService;
 use template\CuidadoTemp;
 use template\ITemplate;
 
-Class Usuario{
+Class Cuidado{
     private ITemplate $template;
     public function __construct(){
         $this->template = new CuidadoTemp();
