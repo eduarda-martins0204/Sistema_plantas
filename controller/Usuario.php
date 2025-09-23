@@ -14,6 +14,9 @@ Class Usuario{
     public function listar(){
         $service = new UsuarioService();
         $resultado = $service->listar();
+
+        echo "TESTE DO ARQUIVO";
+        
         $this->template->layout("public/usuario/listar.php", $resultado);
     }
 
@@ -40,6 +43,7 @@ Class Usuario{
 }
 
 ?>
+
 
 
 
