@@ -1,23 +1,46 @@
 <?php
-require_once 'dao/ICuidadoDAO.php';
-require_once 'controller/Cuidado.php';
+namespace dao\mysql;
 
-class CuidadoDAO implements ICuidadoDAO {
-    // Aqui você implementa os métodos usando SQL para MySQL
-    public function salvar(Cuidado $cuidado) {
-        // Código para inserir no banco
+use dao\ICuidadoDAO;
+use generic\MysqlFactory;
+
+class CuidadoDAO extends MysqlFactory implements ICuidadoDAO {
+
+    public function listar(){
+        $sql = "select id, usuario_id, planta_id, tipo_cuidado from cuidados";
+        $retorno = $this->banco->executar($sql);
+        return $retorno;
     }
-    public function buscarPorId($id) {
-        // Código para buscar por id
+    
+    public function inserir($usuario_id, $planta_id, $tipo_cuidado){
+        $sql = "insert into cuidados (usuario_id, planta_id, tipo_cuidado) values (:usuario_id, :planta_id, :tipo_cuidado)";
+        $param = [
+            ":usuario_id" => $usuario_id,
+            ":planta_id" => $planta_id,
+            ":tipo_cuidado" => $tipo_cuidado
+        ];
+        $retorno = $this->banco->executar($sql, $param);
+        return $retorno;
     }
-    public function buscarTodos() {
-        // Código para buscar todos
+
+    public function alterar($id, $usuario_id, $planta_id, $tipo_cuidado){
+        $sql = "update cuidados set usuario_id = :usuario_id, planta_id = :planta_id, tipo_cuidado = :tipo_cuidado where id = :id";
+        $param = [
+            ":id" => $id,
+            ":usuario_id" => $usuario_id,
+            ":planta_id" => $planta_id,
+            ":tipo_cuidado" => $tipo_cuidado
+        ];
+        $retorno = $this->banco->executar($sql, $param);
+        return $retorno;
     }
-    public function atualizar(Cuidado $cuidado) {
-        // Código para atualizar
-    }
-    public function remover($id) {
-        // Código para remover
+
+    public function excluir($id){
+        $sql = "delete from cuidados where id = :id";
+        $param = [
+            ":id" => $id
+        ];
+        $retorno = $this->banco->executar($sql, $param);
+        return $retorno;
     }
 }
-?>
