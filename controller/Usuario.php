@@ -14,7 +14,7 @@ Class Usuario{
     public function listar(){
         $service = new UsuarioService();
         $resultado = $service->listar();
-        $this->template->layout("\\public\\usuario\\listar.php", $resultado);
+        $this->template->layout("teste.php", $resultado);
     }
 
     public function inserir(){
@@ -40,5 +40,6 @@ Class Usuario{
 }
 
 ?>
+
 
 
