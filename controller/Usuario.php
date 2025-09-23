@@ -5,38 +5,39 @@ use service\UsuarioService;
 use template\UsuarioTemp;
 use template\ITemplate;
 
-class Usuario {
+Class Usuario{
     private ITemplate $template;
-    
-    public function __construct() {
+    public function __construct(){
         $this->template = new UsuarioTemp();
     }
-    
-    public function listar() {
+
+    public function listar(){
         $service = new UsuarioService();
         $resultado = $service->listar();
-        
-        $this->template->layout("public/usuario/listar.php", $resultado);
+        $this->template->layout("\\public\\usuario\\listar.php", $resultado);
     }
-    
-    public function inserir() {
-        $nome = $_POST["nome"];
-        $email = $_POST["email"];
-        $service = new UsuarioService();
-        $resultado = $service->inserir($nome, $email);
 
-        header("location: /mvc20251/usuario/lista?info=1");
+    public function inserir(){
+        $nome = $POST["nome"];
+        $email = $POST["email"];
+        $service = new UsuarioService();
+        $resultado = $service->inseri($nome, $email);
+        header("location: /sistemaplantas/usuario/lista?info=1");
     }
-    
-    public function formulario() {
-        $this->template->layout("public/usuario/form.php");
+
+    public function formulario(){
+        $this->template->layout("\\public\\usuario\\form.php");
     }
-    
-    public function alterarForm() {
+
+    public function alterarForm(){
         $id = $_GET["id"];
         $service = new UsuarioService();
-        $resultado = $service->buscarUsuario($id);
+        $resultado = $service->listarId($id);
 
-        $this->template->layout("public/usuario/formAlterar.php", $resultado);
+        $this->template->layout("\\public\\usuario\\form.php", $resultado);
     }
 }
+
+?>
+
+
