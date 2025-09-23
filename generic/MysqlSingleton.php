@@ -10,7 +10,7 @@ class MysqlSingleton {
 
     private function __construct() {
         try {
-            $dsn = "mysql:host=localhost;dbname=sistemaplantas";
+            $dsn = "mysql:host=localhost;dbname=sistema_plantas";
             $usuario = "root";
             $senha = "";
 
