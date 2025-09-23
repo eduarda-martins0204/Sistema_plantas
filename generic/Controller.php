@@ -8,7 +8,8 @@ class Controller{
         $this->arrChamadas = [
             '' => new Acao('Home', 'index'),
             "planta/listar" => new Acao('Planta', 'listar'),
-            "planta/cadastrar" => new Acao('Planta', 'cadastrar'),
+            "planta/inserir" => new Acao('Planta', 'inserir'),
+            "planta/formulario" => new Acao('Planta', 'formulario'),
             "planta/editar" => new Acao('Planta', 'editar'),
             "planta/excluir" => new Acao('Planta', 'excluir'),
 
