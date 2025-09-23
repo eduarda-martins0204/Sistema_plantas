@@ -3,24 +3,21 @@ namespace service;
 
 use dao\mysql\CuidadoDAO;
 
-Class CuidadoService extends CuidadoDAO {
+class CuidadoService extends CuidadoDAO {
 
     public function listar(){
         return parent::listar();
     }
-
-    public function inserir($id,$cuidado){
-        return parent::inserir($id,$cuidado);
+    
+    public function inserir($usuario_id, $planta_id, $tipo_cuidado){
+        return parent::inserir($usuario_id, $planta_id, $tipo_cuidado);
     }
 
-    public function alterar($id,$cuidado){
-        return parent::alterar($id,$cuidado);
+    public function alterar($id, $usuario_id, $planta_id, $tipo_cuidado){
+        return parent::alterar($id, $usuario_id, $planta_id, $tipo_cuidado);
     }
-
-    public function listarID($ID){
-        return parent::listarID($ID);
+    
+    public function excluir($id){
+        return parent::excluir($id);
     }
-
-
 }
-
