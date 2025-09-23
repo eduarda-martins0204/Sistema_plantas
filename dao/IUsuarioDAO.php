@@ -1,9 +1,9 @@
 <?php
+namespace dao;
+
 interface IUsuarioDAO {
-    public function salvar(Usuario $usuario);
-    public function buscarPorId($id);
-    public function buscarTodos();
-    public function atualizar(Usuario $usuario);
-    public function remover($id);
+    public function listar();
+    public function inserir($nome, $email);
+    public function alterar($id, $nome, $email);
+    public function excluir($id);
 }
-?>
