@@ -14,7 +14,7 @@ Class Cuidado{
 
     public function listar(){
         $service = new CuidadoService();
-        $resultado = $service->listarCuidado();
+        $resultado = $service->listar();
         $this->template->layout("\\public\\cuidado\\listar.php", $resultado);
     }
 
