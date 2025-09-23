@@ -8,7 +8,9 @@ class UsuarioService extends UsuarioDAO {
     public function listar(){
         return parent::listar();
     }
-    
+    public function listarId($id) {
+        return parent::listarId($id);
+     }
     public function inserir($nome, $email){
         return parent::inserir($nome, $email);
     }
@@ -21,3 +23,5 @@ class UsuarioService extends UsuarioDAO {
         return parent::excluir($id);
     }
 }
+
+
