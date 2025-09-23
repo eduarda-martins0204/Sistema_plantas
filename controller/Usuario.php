@@ -30,7 +30,7 @@ Class Usuario{
         $this->template->layout("\\public\\usuario\\form.php");
     }
 
-    publicfunction alterarForm(){
+    public function alterarForm(){
         $id = $_GET["id"];
         $service = new UsuarioService();
         $resultado = $service->buscarUsuario($id);
@@ -40,3 +40,4 @@ Class Usuario{
 }
 
 ?>
+
