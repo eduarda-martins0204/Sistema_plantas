@@ -21,7 +21,7 @@ class CuidadoTemp implements ITemplate {
     }
 }
 
-class ClienteTemp implements ITemplate {
+class UsuarioTemp implements ITemplate {
     public function cabecalho() {
         // Implementação específica para ClienteTemp
     }
@@ -48,3 +48,4 @@ class PlantaTemp implements ITemplate {
         // Implementação específica para PlantaTemp
     }
 }
+
