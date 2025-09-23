@@ -4,13 +4,14 @@ namespace Controller;
 use service\CuidadoService;
 use template\CuidadoTemp;
 use template\ITemplate;
-use generic\Acao;
 
-class Cuidado extends Acao {
-    private $service;
-    
+class Cuidado {
+    private CuidadoService $service;
+    private ITemplate $template;
+
     public function __construct() {
         $this->service = new CuidadoService();
+        $this->template = new CuidadoTemp();
     }
     
     public function listar() {
