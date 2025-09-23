@@ -6,7 +6,7 @@
         <th>E-mail</th>
         <th>Ações</th>
     </tr>
-    <?php foreach ($resultado as $usuario) { ?>
+    <?php foreach ($parametro as $usuario) { ?>
     <tr>
         <td><?= $usuario["id"] ?></td>
         <td><?= $usuario["nome"] ?></td>
