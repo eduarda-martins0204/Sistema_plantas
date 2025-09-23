@@ -12,10 +12,13 @@ Class Cuidado{
         $this->template = new CuidadoTemp();
     }
 
-    public function listar(){
+     public function listar(){
         $service = new CuidadoService();
         $resultado = $service->listar();
-        $this->template->layout("\\public\\cuidado\\listar.php", $resultado);
+        
+        var_dump($resultado); 
+        
+        //$this->template->layout("\\public\\cuidado\\listar.php", $resultado);
     }
 
     public function inserir() {
