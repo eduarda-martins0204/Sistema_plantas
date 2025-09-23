@@ -1,18 +1,19 @@
 <?php
 namespace generic;
 
-class Acao{
+class Acao {
     private $classe;
     private $metodo;
 
     public function __construct($classe, $metodo)
     {
-        $this->classe = "Controller\\".$classe;
+        $this->classe = "controller\\".$classe;
         $this->metodo = $metodo;
     }
 
-    public function executar(){
+    public function executar() {
         $obj = new $this->classe();
         $obj->{$this->metodo}();
     }
 }
+
