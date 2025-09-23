@@ -1,41 +1,40 @@
 <?php
-namespace controller;
+namespace Controller;
 
 use service\PlantaService;
 use template\PlantaTemp;
 use template\ITemplate;
+use generic\Acao;
 
-class Planta {
-    private ITemplate $template;
-    public function __construct(){
-        $this->template = new PlantaTemp();
+class Planta extends Acao {
+    private $service;
+
+    public function __construct() {
+        $this->service = new PlantaService();
     }
 
-    public function listar(){
-        $service = new PlantaService();
-        $resultado = $service->listar();
-        $this->template->layout("\\public\\planta\\listar.php", $resultado);
+    public function listar() {
+        $retorno = $this->service->listar();
+        
+        $this->template->layout("public/planta/listar.php", $retorno);
     }
 
-    public function inserir(){
+    public function inserir() {
         $nome_cientifico = $_POST["nome_cientifico"];
         $nome_popular = $_POST["nome_popular"];
-        $service = new PlantaService();
-        $resultado = $service->inseri($nome_cientifico, $nome_popular);
-        header("location: /mvc20251/planta/lista?info=1");
-        //alterar a rota conforme a pasta
+        $this->service->inserir($nome_cientifico, $nome_popular);
+        
+        header("location: /sistemaplantas/index.php?param=planta/listar");
     }
 
-    public function formulario(){
-        $this->template->layout("\\public\\planta\\form.php");
+    public function formulario() {
+        $this->template->layout("public/planta/form.php");
     }
 
-    public function alterarForm(){
+    public function alterarForm() {
         $id = $_GET["id"];
-        $service = new PlantaService();
-        $resultado = $service->listarID($id);
-
-        $this->template->layout("\\public\\planta\\formAlterar.php", $resultado);
+        $retorno = $this->service->buscarPlanta($id);
+        
+        $this->template->layout("public/planta/formAlterar.php", $retorno);
     }
 }
-?>
