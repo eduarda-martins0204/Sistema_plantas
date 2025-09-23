@@ -5,40 +5,33 @@ use PDO;
 use Exception;
 
 class MysqlSingleton {
-    private static $instance; 
-    private $conexao;
+    private $usuario = 'root';
+    private $senha = '';
     
-    private function __construct() {
-        try {
-            $dsn = "mysql:host=localhost;dbname=sistema_plantas";
-            $usuario = "root";
-            $senha = "";
-
-            $this->conexao = new PDO($dsn, $usuario, $senha);
-            $this->conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $this->conexao->exec("set names utf8");
-        } catch(PDOException $e) {
-            throw new Exception("Erro de Conexão com o Banco de Dados: " . $e->getMessage());
+    private function __construct(){
+        if($this->conexao == null){
+            $this->conexao = new PDO($this->dsn, $this->usuario, $this->senha);
         }
     }
 
-    public static function getInstance() {
-        if (self::$instance) {
-            self::$instance = new self();
+    public static function getInstance(){
+        if(self::$instance == null){
+            self::$instance = new MysqlSingleton();
         }
+        
         return self::$instance;
     }
-    
-    public function executar($query, $param = null) {
-        $sth = $this->conexao->prepare($query);
-        
-        if ($param) {
-            foreach ($param as $chave => $valor) {
-                $sth->bindValue($chave, $valor);
+
+    public function executar($query, $param = array()){
+        if($this->conexao){
+            $sth = $this->conexao->prepare($query);
+            foreach($param as $k => $v){
+                $sth->bindValue($k, $v);
             }
+            
+            $sth->execute();
+            return $sth->fetchAll(PDO::FETCH_ASSOC);
         }
-        
-        $sth->execute();
-        return $sth->fetchAll(PDO::FETCH_ASSOC);
     }
 }
+
