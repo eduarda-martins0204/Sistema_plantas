@@ -8,6 +8,10 @@ class CuidadoService extends CuidadoDAO {
     public function listar(){
         return parent::listar();
     }
+
+    public function listarId($id) {
+        return parent::listarId($id);
+     }
     
     public function inserir($usuario_id, $planta_id, $tipo_cuidado){
         return parent::inserir($usuario_id, $planta_id, $tipo_cuidado);
@@ -21,3 +25,7 @@ class CuidadoService extends CuidadoDAO {
         return parent::excluir($id);
     }
 }
+
+
+
+
