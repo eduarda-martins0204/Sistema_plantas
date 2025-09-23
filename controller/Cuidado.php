@@ -12,14 +12,15 @@ Class Cuidado{
         $this->template = new CuidadoTemp();
     }
 
-     public function listar(){
-        $service = new CuidadoService();
-        $resultado = $service->listar();
-        
-        var_dump($resultado); 
-        
-        //$this->template->layout("\\public\\cuidado\\listar.php", $resultado);
-    }
+      public function listar(){
+
+        $service = new CuidadoService();
+
+        $resultado = $service->listar();
+
+        $this->template->layout("\\public\\cuidado\\listar.php", $resultado);
+
+    }
 
     public function inserir() {
     $usuario_id   = $_POST["usuario_id"];
