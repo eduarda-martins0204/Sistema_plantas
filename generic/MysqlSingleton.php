@@ -6,17 +6,17 @@ use Exception;
 
 class MysqlSingleton {
     private static $instance; 
-    protected $banco;
-
+    private $conexao;
+    
     private function __construct() {
         try {
             $dsn = "mysql:host=localhost;dbname=sistema_plantas";
             $usuario = "root";
             $senha = "";
 
-            $this->banco = new PDO($dsn, $usuario, $senha);
-            $this->banco->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $this->banco->exec("set names utf8");
+            $this->conexao = new PDO($dsn, $usuario, $senha);
+            $this->conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $this->conexao->exec("set names utf8");
         } catch(PDOException $e) {
             throw new Exception("Erro de Conexão com o Banco de Dados: " . $e->getMessage());
         }
