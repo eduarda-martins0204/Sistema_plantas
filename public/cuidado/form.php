@@ -1,12 +1,17 @@
 <form method="POST" action="/mvc20251/cuidado/inserir">
-    <label>Descrição: </label>
-    <input type="text" name="descricao" 
-        value="<?= ($parametro != null) ? $parametro[0]["descricao"] : "" ?>" />
+    <label>ID do Usuário: </label>
+    <input type="number" name="usuario_id" 
+        value="<?= ($parametro != null) ? $parametro[0]["usuario_id"] : "" ?>" />
     <br />
 
-    <label>Frequência: </label>
-    <input type="text" name="frequencia" 
-        value="<?= ($parametro != null) ? $parametro[0]["frequencia"] : "" ?>" />
+    <label>ID da Planta: </label>
+    <input type="number" name="planta_id" 
+        value="<?= ($parametro != null) ? $parametro[0]["planta_id"] : "" ?>" />
+    <br />
+    
+    <label>Tipo de Cuidado: </label>
+    <input type="text" name="tipo_cuidado" 
+        value="<?= ($parametro != null) ? $parametro[0]["tipo_cuidado"] : "" ?>" />
     <br />
 
     <?php
