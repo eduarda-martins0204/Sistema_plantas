@@ -1,7 +1,7 @@
 <?php
 namespace service;
 
-use dao\mysql\CuidadoDao;
+use dao\mysql\CuidadoDAO;
 
 Class CuidadoService extends CuidadoDAO {
 
@@ -23,3 +23,4 @@ Class CuidadoService extends CuidadoDAO {
 
 
 }
+
