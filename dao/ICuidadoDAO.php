@@ -1,9 +1,9 @@
 <?php
+namespace dao;
+
 interface ICuidadoDAO {
-    public function salvar(Cuidado $cuidado);
-    public function buscarPorId($id);
-    public function buscarTodos();
-    public function atualizar(Cuidado $cuidado);
-    public function remover($id);
+    public function listar();
+    public function inserir($usuario_id, $planta_id, $tipo_cuidado);
+    public function alterar($id, $usuario_id, $planta_id, $tipo_cuidado);
+    public function excluir($id);
 }
-?>
