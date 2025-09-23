@@ -4,13 +4,14 @@ namespace Controller;
 use service\PlantaService;
 use template\PlantaTemp;
 use template\ITemplate;
-use generic\Acao;
 
-class Planta extends Acao {
-    private $service;
+class Planta {
+    private PlantaService $service;
+    private ITemplate $template;
 
     public function __construct() {
         $this->service = new PlantaService();
+        $this->template = new PlantaTemp();
     }
 
     public function listar() {
