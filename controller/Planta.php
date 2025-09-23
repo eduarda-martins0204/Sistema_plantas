@@ -1,41 +1,44 @@
 <?php
-namespace Controller;
+namespace controller;
 
 use service\PlantaService;
 use template\PlantaTemp;
 use template\ITemplate;
 
 class Planta {
-    private PlantaService $service;
     private ITemplate $template;
-
-    public function __construct() {
-        $this->service = new PlantaService();
+    public function __construct(){
         $this->template = new PlantaTemp();
     }
 
-    public function listar() {
-        $retorno = $this->service->listar();
-        
-        $this->template->layout("public/planta/listar.php", $retorno);
+    public function listar(){
+        $service = new PlantaService();
+        $resultado = $service->listar();
+        $this->template->layout("\\public\\planta\\listar.php", $resultado);
     }
 
-    public function inserir() {
+    public function inserir(){
         $nome_cientifico = $_POST["nome_cientifico"];
         $nome_popular = $_POST["nome_popular"];
-        $this->service->inserir($nome_cientifico, $nome_popular);
-        
-        header("location: /sistemaplantas/index.php?param=planta/listar");
+        $service = new PlantaService();
+        $resultado = $service->inseri($nome_cientifico, $nome_popular);
+        header("location: /sistemaplantas/planta/lista?info=1");
     }
 
-    public function formulario() {
-        $this->template->layout("public/planta/form.php");
+    public function formulario()
+    {
+        $this->template->layout("\\public\\planta\\form.php");
     }
 
-    public function alterarForm() {
+    public function alterarForm(){
         $id = $_GET["id"];
-        $retorno = $this->service->buscarPlanta($id);
-        
-        $this->template->layout("public/planta/formAlterar.php", $retorno);
+        $service = new PlantaService();
+        $resultado = $service->listarId($id);
+
+        $this->template->layout("\\public\\planta\\formAlterar.php", $resultado);
     }
 }
+
+?>
+
+
