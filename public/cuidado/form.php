@@ -1,4 +1,4 @@
-<form method="POST" action="/mvc20251/cuidado/inserir">
+<form method="POST" action="/sistemaplantas/index.php?param=cuidado/inserir">
     <label>ID do Usuário: </label>
     <input type="number" name="usuario_id" 
         value="<?= ($parametro != null) ? $parametro[0]["usuario_id"] : "" ?>" />
