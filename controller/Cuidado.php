@@ -34,7 +34,7 @@ Class Cuidado{
         $this->template->layout("\\public\\cuidado\\form.php");
     }
     
-    public function alterarForm(){
+    public function formularioalterar(){
         $id = $_GET["id"];
         $service = new CuidadoService();
         $resultado = $service->buscarCuidado($id);
