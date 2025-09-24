@@ -18,8 +18,8 @@ Class Usuario{
     }
 
     public function inserir(){
-        $nome = $POST["nome"];
-        $email = $POST["email"];
+        $nome = $_POST["nome"];
+        $email = $_POST["email"];
         $service = new UsuarioService();
         $resultado = $service->inseri($nome, $email);
         header("location: /sistemaplantas/usuario/lista?info=1");
@@ -39,5 +39,6 @@ Class Usuario{
 }
 
 ?>
+
 
 
