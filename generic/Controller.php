@@ -8,19 +8,22 @@ class Controller{
         $this->arrChamadas = [
             '' => new Acao('Home', 'index'),
             "planta/listar" => new Acao('Planta', 'listar'),
-            "planta/cadastrar" => new Acao('Planta', 'cadastrar'),
-            "planta/editar" => new Acao('Planta', 'editar'),
+            "planta/inserir" => new Acao('Planta', 'inserir'),
+            "planta/formulario" => new Acao('Planta', 'formulario'),
+            "planta/formularioalterar => new Acao('Planta', 'formularioalterar'),
             "planta/excluir" => new Acao('Planta', 'excluir'),
 
             "cuidado/listar" => new Acao('Cuidado', 'listar'),
             "cuidado/inserir" => new Acao('Cuidado', 'inserir'),
             "cuidado/formulario" => new Acao('Cuidado', 'formulario'),
-            "cuidado/alterarForm" => new Acao('Cuidado', 'alterarForm'),
+            "cuidado/formularioalterar => new Acao('Cuidado', 'formularioalterar'),
+            "cuidado/excluir" => new Acao('Cuidado', 'excluir'),
             
-            "usuario/listar" => new Acao('Usuario', 'listar'),
+            "usuario/listar" => new Acao('Usuario', 'listar')
             "usuario/inserir" => new Acao('Usuario', 'inserir'),
             "usuario/formulario" => new Acao('Usuario', 'formulario'),
-            "usuario/alterarForm" => new Acao('Usuario', 'alterarForm'),
+            "usuario/formularioalterar" => new Acao('Usuario', 'formularioalterar'),
+            "usuario/excluir" => new Acao('Usuario', 'excluir'),
         ];
     }
 
