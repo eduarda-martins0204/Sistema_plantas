@@ -1,4 +1,4 @@
-<form method="POST" action="/sistemaplantas/cliente/inserir">
+<form method="POST" action="/sistemaplantas/usuario/inserir">
     <label>Nome: </label>
     <input type="text" name="nome" 
         value="<?= ($parametro != null) ? $parametro[0]["nome"] : "" ?>" />
@@ -19,6 +19,7 @@
 
     <input type="submit" value="enviar" />
 </form>
+
 
 
 
