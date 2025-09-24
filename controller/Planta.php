@@ -30,7 +30,7 @@ class Planta {
         $this->template->layout("\\public\\planta\\form.php");
     }
 
-    public function alterarForm(){
+    public function formularioalterar(){
         $id = $_GET["id"];
         $service = new PlantaService();
         $resultado = $service->listarId($id);
