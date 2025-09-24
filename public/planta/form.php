@@ -1,12 +1,12 @@
-<form method="POST" action="/sistemaplantas/cliente/inserir">
+<form method="POST" action="/sistemaplantas/planta/inserir">
     <label>Nome: </label>
     <input type="text" name="nome" 
         value="<?= ($parametro != null) ? $parametro[0]["nome"] : "" ?>" />
     <br />
 
-    <label>Endereco: </label>
-    <input type="text" name="endereco" 
-        value="<?= ($parametro != null) ? $parametro[0]["endereco"] : "" ?>" />
+    <label>Espécie: </label>
+    <input type="text" name="especie" 
+        value="<?= ($parametro != null) ? $parametro[0]["especie"] : "" ?>" />
     <br />
 
     <?php
@@ -19,5 +19,6 @@
 
     <input type="submit" value="enviar" />
 </form>
+
 
 
