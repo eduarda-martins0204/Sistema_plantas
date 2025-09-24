@@ -20,6 +20,7 @@ class Controller{
             "cuidado/excluir" => new Acao('Cuidado', 'excluir'),
             
             "usuario/listar" => new Acao('Usuario', 'listar')
+            "usuario/alterar" => new Acao('Usuario', 'alterar')
             "usuario/inserir" => new Acao('Usuario', 'inserir'),
             "usuario/formulario" => new Acao('Usuario', 'formulario'),
             "usuario/formularioalterar" => new Acao('Usuario', 'formularioalterar'),
